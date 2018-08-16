@@ -20,7 +20,11 @@ set autowrite  "Save on buffer switch
 set mouse=a
 set ruler
 set laststatus=2
-
+set showcmd
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript.jsx setlocal ts=2 sts=2 sw=2
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+    
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
@@ -63,10 +67,28 @@ Plug 'valloric/matchtagalways'
 
 Plug 'alvan/vim-closetag'
 
+Plug 'ap/vim-buftabline'
+
+Plug 'mxw/vim-jsx'
+
+Plug 'gorodinskiy/vim-coloresque'
+
+Plug 'mtscout6/syntastic-local-eslint.vim'
+
+Plug 'w0rp/ale'
+
 call plug#end()
 
 "Vim Plugin Maps
 map ; :Files<CR>
 
 let g:jedi#force_py_version = 3
+let g:closetag_filenames = '*.html,*.js, *.jsx'
+let g:ale_linters = { 'javascript': ['eslint'] } 
+let g:ale_fixers = {'javascript': ['eslint'] }
+
+
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprevious<CR>
 
