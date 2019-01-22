@@ -89,6 +89,9 @@ let g:ale_fixers = {'javascript': ['eslint'] }
 
 
 set hidden
+silent !stty -ixon
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprevious<CR>
-
+nnoremap <C-Q> :bdelete<CR>
+nnoremap L $
+nnoremap H 0
