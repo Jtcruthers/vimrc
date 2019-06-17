@@ -24,6 +24,7 @@ set showcmd
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript.jsx setlocal ts=2 sts=2 sw=2
 autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2
     
 " Down is really the next line
 nnoremap j gj
@@ -77,6 +78,16 @@ Plug 'mtscout6/syntastic-local-eslint.vim'
 
 Plug 'w0rp/ale'
 
+Plug 'epilande/vim-es2015-snippets'
+
+Plug 'epilande/vim-react-snippets'
+
+Plug 'SirVer/ultisnips'
+
+Plug 'mbbill/undotree'
+
+Plug 'racer-rust/vim-racer'
+
 call plug#end()
 
 "Vim Plugin Maps
@@ -84,8 +95,12 @@ map ; :Files<CR>
 
 let g:jedi#force_py_version = 3
 let g:closetag_filenames = '*.html,*.js, *.jsx'
-let g:ale_linters = { 'javascript': ['eslint'] } 
+let g:ale_linters = { 'javascript': ['eslint'], 'jsx': ['eslint'], 'python': ['pylint'] } 
 let g:ale_fixers = {'javascript': ['eslint'] }
+let g:UltiSnipsExpandTrigger="<C-c>"
+let g:racer_cmd = "/Users/justin.carruthers/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
 
 
 set hidden
