@@ -16,11 +16,13 @@ set number                      " always show line numbers
 set smartcase                   " ignore case if search pattern is all lowercase,
 set timeout timeoutlen=200 ttimeoutlen=100
 set visualbell           " don't beep
-set autowrite  "Save on buffer switch
+set autowrite   "Save on buffer switch
 set mouse=a
 set ruler
 set laststatus=2
 set showcmd
+set ignorecase  " Ignore case in searches
+set smartcase   " Make searches case sensitive if capital letter is used
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript.jsx setlocal ts=2 sts=2 sw=2
 autocmd FileType html setlocal ts=2 sts=2 sw=2
