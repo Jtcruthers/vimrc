@@ -90,6 +90,8 @@ Plug 'mbbill/undotree'
 
 Plug 'racer-rust/vim-racer'
 
+Plug 'scrooloose/nerdcommenter'
+
 call plug#end()
 
 "Vim Plugin Maps
@@ -112,3 +114,5 @@ nnoremap <C-P> :bprevious<CR>
 nnoremap <C-Q> :bdelete<CR>
 nnoremap L $
 nnoremap H 0
+
+:command JsonFormat %!python -m json.tool
