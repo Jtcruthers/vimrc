@@ -1,5 +1,5 @@
 syntax on
-colorscheme xoria256
+colorscheme distinguished
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -23,8 +23,18 @@ set laststatus=2
 set showcmd
 set ignorecase  " Ignore case in searches
 set smartcase   " Make searches case sensitive if capital letter is used
+
+" Folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+nnoremap fa za
+
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript.jsx setlocal ts=2 sts=2 sw=2
+autocmd FileType json setlocal ts=2 sts=2 sw=2
+autocmd FileType vue setlocal ts=2 sts=2 sw=2
 autocmd FileType html setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2
     
@@ -56,51 +66,40 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'tpope/vim-eunuch'
-
-Plug 'scrooloose/nerdtree'
-
-Plug 'airblade/vim-gitgutter'
-
-Plug 'davidhalter/jedi-vim'
+"Plug 'tpope/vim-eunuch'
 
 Plug 'ervandew/supertab'
 
-Plug 'valloric/matchtagalways'
-
-Plug 'alvan/vim-closetag'
+"Plug 'valloric/matchtagalways'
 
 Plug 'ap/vim-buftabline'
 
-Plug 'mxw/vim-jsx'
-
-Plug 'gorodinskiy/vim-coloresque'
-
-Plug 'mtscout6/syntastic-local-eslint.vim'
+"Plug 'mtscout6/syntastic-local-eslint.vim'
 
 Plug 'w0rp/ale'
 
-Plug 'epilande/vim-es2015-snippets'
-
-Plug 'epilande/vim-react-snippets'
-
-Plug 'SirVer/ultisnips'
-
-Plug 'mbbill/undotree'
-
-Plug 'racer-rust/vim-racer'
-
 Plug 'scrooloose/nerdcommenter'
+
+Plug 'jparise/vim-graphql'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'leafOfTree/vim-vue-plugin'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'townk/vim-autoclose'
 
 call plug#end()
 
 "Vim Plugin Maps
-map ; :Files<CR>
+map ; :GFiles<CR>
 
 let g:jedi#force_py_version = 3
 let g:closetag_filenames = '*.html,*.js, *.jsx'
-let g:ale_linters = { 'javascript': ['eslint'], 'jsx': ['eslint'], 'python': ['pylint'] } 
-let g:ale_fixers = {'javascript': ['eslint'] }
+let g:ale_linter_aliases = {'vue': ['css', 'javascript', 'typescript']}
+let g:ale_linters = { 'javascript': ['eslint', 'prettier'], 'jsx': ['eslint'], 'python': ['pylint'], 'vue': ['eslint', 'prettier'] } 
+let g:ale_fixers = {'vue': ['eslint', 'prettier'], 'javascript': ['eslint', 'prettier'], 'html': ['eslint', 'prettier'] }
 let g:UltiSnipsExpandTrigger="<C-c>"
 let g:racer_cmd = "/Users/justin.carruthers/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
@@ -112,6 +111,8 @@ silent !stty -ixon
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprevious<CR>
 nnoremap <C-Q> :bdelete<CR>
+nnoremap <C-W> :bdelete!<CR>
+nnoremap <Leader>f :ALEFix<CR>
 nnoremap L $
 nnoremap H 0
 
